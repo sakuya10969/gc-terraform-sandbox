@@ -58,10 +58,9 @@ resource "google_storage_bucket_iam_member" "runner_object_viewer" {
 # Cloud Run
 # -------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "sandbox" {
-  name                = var.cloud_run_service_name
-  location            = var.region
-  deletion_protection = false
-  ingress             = "INGRESS_TRAFFIC_ALL"
+  name     = var.cloud_run_service_name
+  location = var.region
+  ingress  = "INGRESS_TRAFFIC_ALL"
 
   template {
     scaling {

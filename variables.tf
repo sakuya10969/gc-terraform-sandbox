@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "GCP project ID"
   type        = string
+  default     = "terraform-sandbox-490703"
 }
 
 variable "region" {
@@ -12,6 +13,7 @@ variable "region" {
 variable "bucket_name" {
   description = "Cloud Storage bucket name (must be globally unique)"
   type        = string
+  default     = "tf-sandbox-gcs"
 }
 
 variable "cloud_run_service_name" {
