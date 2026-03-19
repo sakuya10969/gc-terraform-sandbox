@@ -1,0 +1,6 @@
+project_id             = "terraform-sandbox-490703"
+region                 = "asia-northeast1"
+bucket_name            = "terraform-sandbox-490703-tf-sandbox-bucket"
+cloud_run_service_name = "tf-sandbox-run"
+service_account_id     = "tf-sandbox-runner"
+allow_unauthenticated  = false
