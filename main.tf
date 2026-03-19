@@ -1,6 +1,4 @@
-# -------------------------------------------------------------------
 # APIs
-# -------------------------------------------------------------------
 locals {
   apis = [
     "run.googleapis.com",
@@ -20,9 +18,7 @@ resource "google_project_service" "apis" {
   disable_on_destroy         = false
 }
 
-# -------------------------------------------------------------------
 # Service Account
-# -------------------------------------------------------------------
 resource "google_service_account" "runner" {
   account_id   = var.service_account_id
   display_name = "Terraform Sandbox Runner"
@@ -31,9 +27,7 @@ resource "google_service_account" "runner" {
   depends_on = [google_project_service.apis]
 }
 
-# -------------------------------------------------------------------
 # Cloud Storage
-# -------------------------------------------------------------------
 resource "google_storage_bucket" "sandbox" {
   name     = var.bucket_name
   location = var.region
@@ -54,9 +48,7 @@ resource "google_storage_bucket_iam_member" "runner_object_viewer" {
   member = "serviceAccount:${google_service_account.runner.email}"
 }
 
-# -------------------------------------------------------------------
 # Cloud Run
-# -------------------------------------------------------------------
 resource "google_cloud_run_v2_service" "sandbox" {
   name     = var.cloud_run_service_name
   location = var.region
